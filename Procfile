@@ -1,1 +1,1 @@
-worker: python main.py
+worker: python Tele_v1.py
