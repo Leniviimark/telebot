@@ -7,7 +7,7 @@ bot = telebot.TeleBot('1975403441:AAGHW_PopX4Yw70x23S6juXZLrK3GuL9cgE')
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    bot.send_message(message.chat.id, "Я нихрена не умею, но буду учиться!")
+    bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
 
 
@@ -34,7 +34,7 @@ def diff_date(message):
 
 @bot.message_handler(content_types=['text'])
 def text_command(message):
-    bot.send_message(message.chat.id, "Я нихрена не умею, но буду учиться!")
+    bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
 
 
