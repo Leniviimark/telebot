@@ -24,9 +24,9 @@ def test_command(message):
 
 def diff_date(message):
     a = message.text
-    b = datetime.date.today()
+    b = datetime.datetime.now()
     c = datetime.datetime.strptime(a, '%d.%m.%Y')
-    #c = datetime.datetime.date(c)
+    # c = datetime.datetime.date(c)
     d = c - b
     if d.days < 0:
         bot.send_message(message.from_user.id,
