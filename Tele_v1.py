@@ -18,7 +18,7 @@ def test_command(message):
 
 @bot.message_handler(commands=['diff'])
 def test_command(message):
-    bot.send_message(message.chat.id, "Ведите предстоющую дату в формате DD.MM.YYYY")
+    bot.send_message(message.chat.id, "Ведите дату в формате DD.MM.YYYY")
     bot.register_next_step_handler(message, diff_date)
 
 
@@ -26,7 +26,7 @@ def diff_date(message):
     a = message.text
     b = datetime.date.today()
     c = datetime.datetime.strptime(a, '%d.%m.%Y')
-    c = datetime.datetime.date(c)
+    #c = datetime.datetime.date(c)
     d = c - b
     if d.days < 0:
         bot.send_message(message.from_user.id,
