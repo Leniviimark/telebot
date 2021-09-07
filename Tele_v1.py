@@ -28,7 +28,17 @@ def diff_date(message):
     c = datetime.datetime.strptime(a, '%d.%m.%Y')
     c = datetime.datetime.date(c)
     d = c - b
-    bot.send_message(message.from_user.id, f'{d.days} дней')
+    if d.days < 0:
+        bot.send_message(message.from_user.id,
+                         'Прошло ' + str(-d.days) + ' days ' + str(d.seconds // 3600) + ' hours ' + str(
+                             d.seconds % 3600 // 60) + ' minutes ' + str(
+                             d.seconds % 60) + ' seconds')
+    else:
+        bot.send_message(message.from_user.id,
+                         'Осталось ' + str(d.days) + ' days ' + str(d.seconds // 3600) + ' hours ' + str(
+                             d.seconds % 3600 // 60) + ' minutes ' + str(
+                             d.seconds % 60) + ' seconds')
+
     # bot.register_next_step_handler(message, get_surname)
 
 
