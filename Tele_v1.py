@@ -12,12 +12,6 @@ def start_command(message):
     bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
 
-
-@bot.message_handler(commands=['test'])
-def test_command(message):
-    bot.send_message(message.chat.id, "Чего желаете?")
-
-
 @bot.message_handler(commands=['diff'])
 def test_command(message):
     bot.send_message(message.chat.id, "Ведите дату в формате DD.MM.YYYY")
