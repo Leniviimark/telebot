@@ -50,7 +50,7 @@ def text_command(message):
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
 
 
-@bot.message_handler(commands=['100'])
+@bot.message_handler(commands=['test'])
 def sto_command(message):
     bot.send_message(message.chat.id, new_a)
 
