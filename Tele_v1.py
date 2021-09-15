@@ -4,6 +4,8 @@ import telebot
 
 bot = telebot.TeleBot('1975403441:AAGHW_PopX4Yw70x23S6juXZLrK3GuL9cgE')
 
+new_a = 100
+
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
@@ -46,6 +48,11 @@ def diff_date(message):
 def text_command(message):
     bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
+
+
+@bot.message_handler(commands=['100'])
+def sto_command(message):
+    bot.send_message(message.chat.id, new_a)
 
 
 bot.polling(none_stop=True, interval=0)
