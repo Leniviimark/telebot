@@ -39,15 +39,15 @@ def diff_date(message):
     # bot.register_next_step_handler(message, get_surname)
 
 
+@bot.message_handler(commands=['test'])
+def sto_command(message):
+    bot.send_message(message.chat.id, new_a)
+
+
 @bot.message_handler(content_types=['text'])
 def text_command(message):
     bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
     bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
-
-
-@bot.message_handler(commands=['test'])
-def sto_command(message):
-    bot.send_message(message.chat.id, new_a)
 
 
 bot.polling(none_stop=True, interval=0)
