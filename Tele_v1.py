@@ -5,6 +5,7 @@ import telebot
 bot = telebot.TeleBot('1975403441:AAGHW_PopX4Yw70x23S6juXZLrK3GuL9cgE')
 
 new_a = 100
+global mk_dict
 
 
 @bot.message_handler(commands=['start'])
@@ -44,28 +45,24 @@ def sto_command(message):
 
 @bot.message_handler(commands=['mk_score_wr'])
 def test_command(message):
-    global mk_dict
-    try:
-        len(mk_dict)
-    except:
-        mk_dict = {}
     bot.send_message(message.chat.id, "Ведите имя")
     bot.register_next_step_handler(message, mk_score_name)
 
 
 def mk_score_name(message):
-    global user
     user = str(message.text)
     bot.send_message(message.chat.id, "Ведите результат")
-    bot.register_next_step_handler(message, mk_score_score)
+    bot.register_next_step_handler(message, mk_score_score, user)
 
 
-def mk_score_score(message):
-    global user
-    global score
-    global mk_dict
+def mk_score_score(message, user):
     score = int(str(message.text))
     user = user.upper()
+    global mk_dict
+    try:
+        len(mk_dict)
+    except:
+        mk_dict = {}
 
     try:
         mk_dict[user] = mk_dict[user] + score
@@ -84,6 +81,7 @@ def test_command(message):
         else:
             b = b + '\n' + a
     bot.send_message(message.chat.id, b)
+
 
 @bot.message_handler(content_types=['text'])
 def text_command(message):
