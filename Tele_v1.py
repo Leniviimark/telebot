@@ -43,44 +43,44 @@ def sto_command(message):
     bot.send_message(message.chat.id, new_a)
 
 
-@bot.message_handler(commands=['mk_score_wr'])
-def test_command(message):
-    bot.send_message(message.chat.id, "Ведите имя")
-    bot.register_next_step_handler(message, mk_score_name)
-
-
-def mk_score_name(message):
-    user = str(message.text)
-    bot.send_message(message.chat.id, "Ведите результат")
-    bot.register_next_step_handler(message, mk_score_score, user)
-
-
-def mk_score_score(message, user):
-    score = int(str(message.text))
-    user = user.upper()
-    global mk_dict
-    try:
-        len(mk_dict)
-    except:
-        mk_dict = {}
-
-    try:
-        mk_dict[user] = mk_dict[user] + score
-    except:
-        mk_dict[user] = score
-
-
-@bot.message_handler(commands=['mk_score_r'])
-def test_command(message):
-    global mk_dict
-    b = ''
-    for x, y in mk_dict.items():
-        a = x + ' ' + str(y)
-        if len(b) == 0:
-            b = a
-        else:
-            b = b + '\n' + a
-    bot.send_message(message.chat.id, b)
+# @bot.message_handler(commands=['mk_score_wr'])
+# def test_command(message):
+#     bot.send_message(message.chat.id, "Ведите имя")
+#     bot.register_next_step_handler(message, mk_score_name)
+#
+#
+# def mk_score_name(message):
+#     user = str(message.text)
+#     bot.send_message(message.chat.id, "Ведите результат")
+#     bot.register_next_step_handler(message, mk_score_score, user)
+#
+#
+# def mk_score_score(message, user):
+#     score = int(str(message.text))
+#     user = user.upper()
+#     global mk_dict
+#     try:
+#         len(mk_dict)
+#     except:
+#         mk_dict = {}
+#
+#     try:
+#         mk_dict[user] = mk_dict[user] + score
+#     except:
+#         mk_dict[user] = score
+#
+#
+# @bot.message_handler(commands=['mk_score_r'])
+# def test_command(message):
+#     global mk_dict
+#     b = ''
+#     for x, y in mk_dict.items():
+#         a = x + ' ' + str(y)
+#         if len(b) == 0:
+#             b = a
+#         else:
+#             b = b + '\n' + a
+#     bot.send_message(message.chat.id, b)
 
 
 @bot.message_handler(content_types=['text'])
