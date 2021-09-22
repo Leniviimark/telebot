@@ -68,19 +68,19 @@ def mk_score_score(message, user):
         mk_dict[user] = mk_dict[user] + score
     except:
         mk_dict[user] = score
-#
-#
-# @bot.message_handler(commands=['mk_score_r'])
-# def test_command(message):
-#     global mk_dict
-#     b = ''
-#     for x, y in mk_dict.items():
-#         a = x + ' ' + str(y)
-#         if len(b) == 0:
-#             b = a
-#         else:
-#             b = b + '\n' + a
-#     bot.send_message(message.chat.id, b)
+
+
+@bot.message_handler(commands=['mk_score_r'])
+def test_command(message):
+    global mk_dict
+    b = ''
+    for x, y in mk_dict.items():
+        a = x + ' ' + str(y)
+        if len(b) == 0:
+            b = a
+        else:
+            b = b + '\n' + a
+    bot.send_message(message.chat.id, b)
 
 
 @bot.message_handler(content_types=['text'])
