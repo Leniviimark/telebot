@@ -17,7 +17,7 @@ def start_command(message):
 
 @bot.message_handler(commands=['diff'])
 def test_command(message):
-    bot.send_message(message.chat.id, "Ведите дату в формате DD.MM.YYYY")
+    bot.send_message(message.chat.id, "Введите дату в формате DD.MM.YYYY")
     bot.register_next_step_handler(message, diff_date)
 
 
@@ -46,13 +46,13 @@ def sto_command(message):
 
 @bot.message_handler(commands=['mk_score_wr'])
 def test_command(message):
-    bot.send_message(message.chat.id, "Ведите имя")
+    bot.send_message(message.chat.id, "Введите имя")
     bot.register_next_step_handler(message, mk_score_name)
 
 
 def mk_score_name(message):
     user = str(message.text)
-    bot.send_message(message.chat.id, "Ведите результат")
+    bot.send_message(message.chat.id, "Введите результат")
     bot.register_next_step_handler(message, mk_score_score, user)
 
 
@@ -69,6 +69,7 @@ def mk_score_score(message, user):
         mk_dict[user] = mk_dict[user] + score
     except:
         mk_dict[user] = score
+    bot.send_message(message.chat.id, f"Результат записан {user} - {score}")
 
 
 @bot.message_handler(commands=['mk_score_r'])
