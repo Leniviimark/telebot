@@ -74,6 +74,10 @@ def mk_score_score(message, user):
 @bot.message_handler(commands=['mk_score_r'])
 def test_command(message):
     global mk_dict
+    try:
+        len(mk_dict)
+    except:
+        mk_dict = {}
     b = ''
     for x, y in mk_dict.items():
         a = x + ' ' + str(y)
