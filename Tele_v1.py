@@ -5,7 +5,6 @@ import telebot
 bot = telebot.TeleBot('1975403441:AAGHW_PopX4Yw70x23S6juXZLrK3GuL9cgE')
 
 new_a = 100
-mk_dict = {}
 
 
 @bot.message_handler(commands=['start'])
@@ -43,14 +42,13 @@ def sto_command(message):
     bot.send_message(message.chat.id, new_a)
 
 
-@bot.message_handler(content_types=['text'])
-def text_command(message):
-    bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
-    bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
-
-
 @bot.message_handler(commands=['mk_score_wr'])
 def test_command(message):
+    global mk_dict
+    try:
+        len(mk_dict)
+    except:
+        mk_dict = {}
     bot.send_message(message.chat.id, "Ведите имя")
     bot.register_next_step_handler(message, mk_score_name)
 
@@ -65,6 +63,7 @@ def mk_score_name(message):
 def mk_score_score(message):
     global user
     global score
+    global mk_dict
     score = int(str(message.text))
     user = user.upper()
 
@@ -72,6 +71,12 @@ def mk_score_score(message):
         mk_dict[user] = mk_dict[user] + score
     except:
         mk_dict[user] = score
+
+
+@bot.message_handler(content_types=['text'])
+def text_command(message):
+    bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
+    bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff")
 
 
 bot.polling(none_stop=True, interval=0)
