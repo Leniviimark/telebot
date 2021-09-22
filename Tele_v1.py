@@ -11,7 +11,8 @@ global mk_dict
 @bot.message_handler(commands=['start'])
 def start_command(message):
     bot.send_message(message.chat.id, "Я мало что умею, но буду учиться!")
-    bot.send_message(message.chat.id, "Доступные команды /start, /test, /diff, /mk_score_wr, /mk_score_r")
+    bot.send_message(message.chat.id,
+                     "Доступные команды /start,\n/test,\n/diff,\n/mk_score_wr,\n/mk_score_r,\n/mk_score_clear")
 
 
 @bot.message_handler(commands=['diff'])
@@ -81,6 +82,17 @@ def test_command(message):
         else:
             b = b + '\n' + a
     bot.send_message(message.chat.id, b)
+
+
+@bot.message_handler(commands=['mk_score_clear'])
+def test_command(message):
+    global mk_dict
+    try:
+        mk_dict.clear()
+        bot.send_message(message.chat.id, "Очищено")
+    except:
+        bot.send_message(message.chat.id, "Было пусто")
+        pass
 
 
 @bot.message_handler(content_types=['text'])
