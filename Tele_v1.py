@@ -2,7 +2,7 @@ import datetime
 
 import telebot
 
-bot = telebot.TeleBot('1975403441:AAGHW_PopX4Yw70x23S6juXZLrK3GuL9cgE')
+bot = telebot.TeleBot()
 
 new_a = 100
 global mk_dict
